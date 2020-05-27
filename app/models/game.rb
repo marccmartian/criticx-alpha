@@ -13,4 +13,16 @@ class Game < ApplicationRecord
 
   #enums
   enum category: { main_game: 0, expansion: 1 }
+
+  #validators
+  validates :name, :category, presence: true
+  validates :name, uniqueness: true
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+  validate :game_id_if_expansion_category
+
+  def game_id_if_expansion_category
+    if category == "expansion" and parent.nil?
+      errors.add(:game_id, "Parent game don't exist")
+    end
+  end
 end
