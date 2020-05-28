@@ -17,7 +17,7 @@ class Game < ApplicationRecord
   #validators
   validates :name, :category, presence: true
   validates :name, uniqueness: true
-  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+  validates :rating, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validate :game_id_if_expansion_category
 
   def game_id_if_expansion_category
