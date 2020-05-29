@@ -5,8 +5,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @platforms = @game.platforms
-    @genres = @game.genre
   end
 
   def new
@@ -33,6 +31,12 @@ class GamesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    game = Game.find(params[:id])
+    game.destroy
+    redirect_to games_path
   end
 
   private

@@ -4,9 +4,12 @@
   <li>Rating: <%= @game.rating %> </li>
   <li>Release date: <%= @game.release_date %> </li>
   <li>Platform(s): 
-    <%= @platforms.map{ |platform| platform.name}.join(", ") %>
+    <%= @game.platforms.map(&:name).join(", ") %>
   </li>
   <li>Genre(s): 
-    <%= @genres.map{ |genre| genre.name }.join(", ") %>
+    <%= @game.genre.map(&:name).join(", ") %>
   </li>
 </ul>
+
+<%= link_to "Back to games", games_path %>
+<%= link_to "Delete this game", game_path(@game), method: :delete, data: {confirm: "Really delete the game?"} %>
