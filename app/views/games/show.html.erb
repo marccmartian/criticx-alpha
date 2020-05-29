@@ -1,0 +1,12 @@
+<h1> <%= @game.name  %> </h1>
+<p> <%= @game.summary %> </p>
+<ul>
+  <li>Rating: <%= @game.rating %> </li>
+  <li>Release date: <%= @game.release_date %> </li>
+  <li>Platform(s): 
+    <%= @platforms.map{ |platform| platform.name}.join(", ") %>
+  </li>
+  <li>Genre(s): 
+    <%= @genres.map{ |genre| genre.name }.join(", ") %>
+  </li>
+</ul>
