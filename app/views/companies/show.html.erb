@@ -6,3 +6,6 @@
     <%= @games.map{ |game| game.name }.join(", ") %>.
   </li>
 </ul>
+
+<%= link_to "Back to companies", companies_path %>
+<%= link_to "Delete this Company", company_path(@company), method: :delete, data: {confirm: "Really delte this company?"} %>
